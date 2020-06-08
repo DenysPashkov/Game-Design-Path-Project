@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843097842434B36D00D3CA79 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 843097832434B36D00D3CA79 /* GameScene.sks */; };
+		84DC6D492434AA4E003E5599 /* Level 1 try.sks in Resources */ = {isa = PBXBuildFile; fileRef = 84DC6D472434AA4E003E5599 /* Level 1 try.sks */; };
 		84F03C3D2431EB4500ED371F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C3C2431EB4500ED371F /* AppDelegate.swift */; };
-		84F03C3F2431EB4500ED371F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C3E2431EB4500ED371F /* GameScene.sks */; };
 		84F03C412431EB4500ED371F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C402431EB4500ED371F /* Actions.sks */; };
 		84F03C432431EB4500ED371F /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C422431EB4500ED371F /* GameScene.swift */; };
 		84F03C452431EB4500ED371F /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C442431EB4500ED371F /* GameViewController.swift */; };
@@ -17,6 +18,12 @@
 		84F03C4D2431EB4900ED371F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C4B2431EB4900ED371F /* LaunchScreen.storyboard */; };
 		84F03C582431EB4900ED371F /* Game_Design_Path_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C572431EB4900ED371F /* Game_Design_Path_ProjectTests.swift */; };
 		84F03C632431EB4900ED371F /* Game_Design_Path_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C622431EB4900ED371F /* Game_Design_Path_ProjectUITests.swift */; };
+		84F03C7C2431F7CE00ED371F /* MainCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C7B2431F7CE00ED371F /* MainCharacter.swift */; };
+		84F03C802431F80400ED371F /* TLAnalogJoystick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F03C7F2431F80400ED371F /* TLAnalogJoystick.swift */; };
+		84F03C862431F82500ED371F /* jSubstrate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C822431F82400ED371F /* jSubstrate@2x.png */; };
+		84F03C872431F82500ED371F /* jSubstrate.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C832431F82500ED371F /* jSubstrate.png */; };
+		84F03C882431F82500ED371F /* jStick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C842431F82500ED371F /* jStick@2x.png */; };
+		84F03C892431F82500ED371F /* jStick.png in Resources */ = {isa = PBXBuildFile; fileRef = 84F03C852431F82500ED371F /* jStick.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +44,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		843097832434B36D00D3CA79 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		84DC6D472434AA4E003E5599 /* Level 1 try.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = "Level 1 try.sks"; sourceTree = "<group>"; };
 		84F03C392431EB4500ED371F /* Game Design Path Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Game Design Path Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F03C3C2431EB4500ED371F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		84F03C3E2431EB4500ED371F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		84F03C402431EB4500ED371F /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		84F03C422431EB4500ED371F /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		84F03C442431EB4500ED371F /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +61,12 @@
 		84F03C5E2431EB4900ED371F /* Game Design Path ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Game Design Path ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		84F03C622431EB4900ED371F /* Game_Design_Path_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game_Design_Path_ProjectUITests.swift; sourceTree = "<group>"; };
 		84F03C642431EB4900ED371F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F03C7B2431F7CE00ED371F /* MainCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCharacter.swift; sourceTree = "<group>"; };
+		84F03C7F2431F80400ED371F /* TLAnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TLAnalogJoystick.swift; sourceTree = "<group>"; };
+		84F03C822431F82400ED371F /* jSubstrate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jSubstrate@2x.png"; sourceTree = "<group>"; };
+		84F03C832431F82500ED371F /* jSubstrate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jSubstrate.png; sourceTree = "<group>"; };
+		84F03C842431F82500ED371F /* jStick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jStick@2x.png"; sourceTree = "<group>"; };
+		84F03C852431F82500ED371F /* jStick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jStick.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +94,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84DC6D46243497D3003E5599 /* walk.atlas */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = walk.atlas;
+			sourceTree = "<group>";
+		};
 		84F03C302431EB4500ED371F = {
 			isa = PBXGroup;
 			children = (
@@ -103,11 +124,10 @@
 		84F03C3B2431EB4500ED371F /* Game Design Path Project */ = {
 			isa = PBXGroup;
 			children = (
+				84DC6D46243497D3003E5599 /* walk.atlas */,
 				84F03C3C2431EB4500ED371F /* AppDelegate.swift */,
-				84F03C3E2431EB4500ED371F /* GameScene.sks */,
-				84F03C402431EB4500ED371F /* Actions.sks */,
-				84F03C422431EB4500ED371F /* GameScene.swift */,
-				84F03C442431EB4500ED371F /* GameViewController.swift */,
+				84F03C702431F3B000ED371F /* Code */,
+				84F03C712431F3C400ED371F /* SKS */,
 				84F03C462431EB4500ED371F /* Main.storyboard */,
 				84F03C492431EB4900ED371F /* Assets.xcassets */,
 				84F03C4B2431EB4900ED371F /* LaunchScreen.storyboard */,
@@ -132,6 +152,71 @@
 				84F03C642431EB4900ED371F /* Info.plist */,
 			);
 			path = "Game Design Path ProjectUITests";
+			sourceTree = "<group>";
+		};
+		84F03C702431F3B000ED371F /* Code */ = {
+			isa = PBXGroup;
+			children = (
+				84F03C722431F3E000ED371F /* Views */,
+				84F03C7A2431F7A700ED371F /* Player */,
+			);
+			path = Code;
+			sourceTree = "<group>";
+		};
+		84F03C712431F3C400ED371F /* SKS */ = {
+			isa = PBXGroup;
+			children = (
+				843097832434B36D00D3CA79 /* GameScene.sks */,
+				84F03C402431EB4500ED371F /* Actions.sks */,
+				84DC6D472434AA4E003E5599 /* Level 1 try.sks */,
+			);
+			path = SKS;
+			sourceTree = "<group>";
+		};
+		84F03C722431F3E000ED371F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				84F03C442431EB4500ED371F /* GameViewController.swift */,
+				84F03C422431EB4500ED371F /* GameScene.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		84F03C7A2431F7A700ED371F /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				84F03C7B2431F7CE00ED371F /* MainCharacter.swift */,
+				84F03C7D2431F7D500ED371F /* Movement */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		84F03C7D2431F7D500ED371F /* Movement */ = {
+			isa = PBXGroup;
+			children = (
+				84F03C7E2431F7EF00ED371F /* Joystick */,
+			);
+			path = Movement;
+			sourceTree = "<group>";
+		};
+		84F03C7E2431F7EF00ED371F /* Joystick */ = {
+			isa = PBXGroup;
+			children = (
+				84F03C7F2431F80400ED371F /* TLAnalogJoystick.swift */,
+				84F03C812431F80B00ED371F /* Joystick Images */,
+			);
+			path = Joystick;
+			sourceTree = "<group>";
+		};
+		84F03C812431F80B00ED371F /* Joystick Images */ = {
+			isa = PBXGroup;
+			children = (
+				84F03C852431F82500ED371F /* jStick.png */,
+				84F03C842431F82500ED371F /* jStick@2x.png */,
+				84F03C832431F82500ED371F /* jSubstrate.png */,
+				84F03C822431F82400ED371F /* jSubstrate@2x.png */,
+			);
+			path = "Joystick Images";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,10 +324,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				84F03C482431EB4500ED371F /* Main.storyboard in Resources */,
-				84F03C3F2431EB4500ED371F /* GameScene.sks in Resources */,
+				84F03C892431F82500ED371F /* jStick.png in Resources */,
+				843097842434B36D00D3CA79 /* GameScene.sks in Resources */,
+				84F03C882431F82500ED371F /* jStick@2x.png in Resources */,
+				84F03C872431F82500ED371F /* jSubstrate.png in Resources */,
 				84F03C4A2431EB4900ED371F /* Assets.xcassets in Resources */,
 				84F03C4D2431EB4900ED371F /* LaunchScreen.storyboard in Resources */,
 				84F03C412431EB4500ED371F /* Actions.sks in Resources */,
+				84DC6D492434AA4E003E5599 /* Level 1 try.sks in Resources */,
+				84F03C862431F82500ED371F /* jSubstrate@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,8 +357,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84F03C7C2431F7CE00ED371F /* MainCharacter.swift in Sources */,
 				84F03C432431EB4500ED371F /* GameScene.swift in Sources */,
 				84F03C452431EB4500ED371F /* GameViewController.swift in Sources */,
+				84F03C802431F80400ED371F /* TLAnalogJoystick.swift in Sources */,
 				84F03C3D2431EB4500ED371F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,10 +541,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DenysPashkov.Game-Design-Path-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -467,10 +560,11 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DenysPashkov.Game-Design-Path-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -15,19 +15,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	private var endTouch : CGPoint = CGPoint.zero
 	private var touchStarted: TimeInterval?
 	
+	private var world : SKNode? = nil
+	
 	var oldCurrentTime : Double = 0
 	var character : MainCharacter!
 	
-	private let backgroundCustomColor = UIColor.green
-	
 	private let moveJoystick = TLAnalogJoystick(withDiameter: 100)
+	
 	
 	override func didMove(to view: SKView) {
 
 		physicsWorld.contactDelegate = self
 		
-		self.backgroundColor =  backgroundCustomColor
-		print("try")
+		backgroundColor = #colorLiteral(red: 0.9051741958, green: 0.8041020036, blue: 0.5297824144, alpha: 1)
+		
+		world = childNode(withName: "World")
+		
+		defineTilesetWorld()
 		spawnPlayer()
 		manageJoystick()
 		gestureSetting()
@@ -35,15 +39,68 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		view.isMultipleTouchEnabled = true
 	}
 	
-//	MARK: Recognize Player
+//	MARK: tileset world
 	
-	func spawnPlayer() {
+	private func defineTilesetWorld(){
+		for node in children{
+			if node.name == "GroundTiles"{
+				if let someTiles : SKTileMapNode = node as? SKTileMapNode{
+
+					giveTileMapPhysicsBody(tileMap: someTiles)
+					
+					someTiles.removeFromParent()
+
+				}
+				break
+			}
+		}
+	}
+	
+	private func giveTileMapPhysicsBody(tileMap : SKTileMapNode){
 		
-		if let characterNode = childNode(withName: "MainCharacter") as? SKSpriteNode{
-			character = MainCharacter(cNode: characterNode)
-			character.player.texture?.filteringMode = .nearest
+		let tileSize = tileMap.tileSize
+		
+		let halfWidth = CGFloat(tileMap.numberOfColumns) / 2 * tileSize.width
+		let halfHeight = CGFloat(tileMap.numberOfRows) / 2 * tileSize.height
+		
+		for col in 0...tileMap.numberOfColumns {
+			for row in 0...tileMap.numberOfRows {
+				
+				if let tileDefinition = tileMap.tileDefinition(atColumn: col, row: row){
+
+					let tileArray = tileDefinition.textures
+					let tileTexture = tileArray[0]
+					let x = CGFloat(col) * tileSize.width - halfWidth + ( tileSize.width / 2)
+					let y = CGFloat(row) * tileSize.height - halfHeight + (tileSize.height / 2)
+					
+					let tileNode = SKSpriteNode(texture: tileTexture)
+					tileNode.position = CGPoint(x: x, y: y)
+					tileNode.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: tileTexture.size().width, height: tileTexture.size().height))
+					tileNode.physicsBody?.affectedByGravity = false
+					tileNode.physicsBody?.isDynamic = false
+					tileNode.physicsBody?.allowsRotation = false
+					tileNode.physicsBody?.pinned = true
+					tileNode.physicsBody?.contactTestBitMask = UInt32(3)
+					tileNode.physicsBody?.categoryBitMask = UInt32(3)
+					
+					world!.addChild(tileNode)
+					
+					tileNode.position = CGPoint(x: tileNode.position.x + tileMap.position.x, y: tileNode.position.y + tileMap.position.y)
+				}
+				
+			}
 		}
 		
+	}
+	
+//	MARK: Recognize Player
+	
+	private func spawnPlayer() {
+
+		if let characterNode = childNode(withName: "MainCharacter") as? SKSpriteNode{
+			character = MainCharacter(cNode: characterNode)
+		}
+
 	}
 		
 //	MARK: Setting Movement
@@ -62,31 +119,35 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 		
 		camera!.addChild(moveJoystickHiddenArea)
 		
+///			move the player
 		moveJoystick.on(.move) { [unowned self] joystick in
-
+//			print(joystick.velocity.)
 			self.character.xMove(direction: joystick.velocity.x)
-
+			
+		}
+		
+///		when you release the joystick go on idle animation
+		moveJoystick.on(.end) { (joystick) in
+//			self.character.playerIdleAnimation()
 		}
 	}
-//	start Touch
 	
+//	start Touch
 	override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 		if let touch = touches.first{
 			initialTouch = touch.location(in: self.scene!)
 			endTouch = initialTouch
 		}
 	}
-//	Moving
-	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-		 if let touch = touches.first?.location(in: self.scene!){ endTouch = touch }
-	}
 	
+//	end Touch
 	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-		
-		if endTouch.x - initialTouch.x > 150 || endTouch.x - initialTouch.x < -150 {
-			print(endTouch.x - initialTouch.x > 150 ? " X positive" : " X negative")
-		} else if endTouch.y - initialTouch.y > 150 || endTouch.y - initialTouch.y < -150 {
-			print(endTouch.y - initialTouch.y > 150 ? " Y positive" : " Y negative")
+		if let touch = touches.first?.location(in: self.scene!){
+			if touch.x - initialTouch.x > 150 || touch.x - initialTouch.x < -150 {
+				character.xAttack(direction: endTouch.x - initialTouch.x)
+			} else if touch.y - initialTouch.y > 150 || touch.y - initialTouch.y < -150 {
+				character.yAttack(direction: endTouch.y - initialTouch.y)
+			}
 		}
 	}
 	
@@ -94,18 +155,24 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 	
 	func gestureSetting(){
 		
-			let shortTapGesture = UITapGestureRecognizer(target: camera?.scene, action: #selector(shortTap(_:)))
-			camera?.scene?.view?.addGestureRecognizer(shortTapGesture)
+		let shortTapGesture = UITapGestureRecognizer(target: camera?.scene, action: #selector(shortTap(_:)))
+		camera?.scene?.view?.addGestureRecognizer(shortTapGesture)
+		
+		let longTapGesture = UILongPressGestureRecognizer(target: camera?.scene, action: #selector(longPress(_:)))
+		longTapGesture.minimumPressDuration = 0.5
+		longTapGesture.allowableMovement = 0.1
+		camera?.scene?.view?.addGestureRecognizer(longTapGesture)
 			
-			let longTapGesture = UILongPressGestureRecognizer(target: camera?.scene, action: #selector(longPress(_:)))
-			longTapGesture.minimumPressDuration = 1
-			camera?.scene?.view?.addGestureRecognizer(longTapGesture)
-			
-		}
+	}
 		
 //	Short Tap Manage
 	
 	@objc func shortTap(_ sender: UITapGestureRecognizer) {
+		print("short")
+		Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { (_) in
+			print("peppe")
+		}
+		
 		if (sender.location(in: camera?.scene?.view).x) > (camera?.scene?.view?.frame.size.width)! / 2 {
 			character.doubleJump()
 			character.jump()
@@ -138,6 +205,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			firstBody = contact.bodyB
 		}
 		
+///		if collider 1 (player) and collider 3(ground) touch each other you'll be able to jump again using ground touched function
 		if firstBody.categoryBitMask == UInt32(1) && secondBody.categoryBitMask == UInt32(3){
 			character.groundTouched()
 		}
@@ -160,7 +228,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 			actionsArray.append(shakeAction);
 			actionsArray.append(shakeAction.reversed());
 		}
-
+		
 		let actionSeq = SKAction.sequence(actionsArray);
 		layer.run(actionSeq);
 	}
